@@ -2,3 +2,9 @@
 dblp.xml
 output
 .Rapp.history
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
