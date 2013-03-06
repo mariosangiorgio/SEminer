@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentFilters</key>
+	<dict/>
+	<key>auto_connect</key>
+	<true/>
+	<key>data</key>
+	<dict>
+		<key>connection</key>
+		<dict>
+			<key>database</key>
+			<string>SEminer</string>
+			<key>host</key>
+			<string>127.0.0.1</string>
+			<key>kcid</key>
+			<string>-8483131661615753872</string>
+			<key>name</key>
+			<string>SEminer - local</string>
+			<key>rdbms_type</key>
+			<string>mysql</string>
+			<key>sslCACertFileLocation</key>
+			<string></string>
+			<key>sslCACertFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslCertificateFileLocation</key>
+			<string></string>
+			<key>sslCertificateFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>sslKeyFileLocation</key>
+			<string></string>
+			<key>sslKeyFileLocationEnabled</key>
+			<integer>0</integer>
+			<key>type</key>
+			<string>SPTCPIPConnection</string>
+			<key>useSSL</key>
+			<integer>0</integer>
+			<key>user</key>
+			<string>SEminer</string>
+		</dict>
+		<key>session</key>
+		<dict>
+			<key>connectionEncoding</key>
+			<string>latin1</string>
+			<key>contentFilter</key>
+			<dict/>
+			<key>contentPageNumber</key>
+			<integer>1</integer>
+			<key>contentSelection</key>
+			<data>
+			YnBsaXN0MDDUAQIDBAUGNjdYJHZlcnNpb25YJG9iamVjdHNZJGFy
+			Y2hpdmVyVCR0b3ASAAGGoK0HCBUWFxgZHSQoLDA0VSRudWxs0wkK
+			CwwQFFdOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzow0OD4ACgAOA
+			BKMREhOABYAGgAiADFR0eXBlVHJvd3NUa2V5c18QJlNlbGVjdGlv
+			bkRldGFpbFR5cGVQcmltYXJ5S2V5ZWREZXRhaWxz0wkKCxobHKCg
+			gAfSHh8gIVokY2xhc3NuYW1lWCRjbGFzc2VzXxATTlNNdXRhYmxl
+			RGljdGlvbmFyeaMgIiNcTlNEaWN0aW9uYXJ5WE5TT2JqZWN00goL
+			JSehJoAJgAvSCykqK1lOUy5zdHJpbmeACldWZW51ZUlk0h4fLS5f
+			EA9OU011dGFibGVTdHJpbmejLS8jWE5TU3RyaW5n0h4fMTJeTlNN
+			dXRhYmxlQXJyYXmjMTMjV05TQXJyYXnSHh8iNaIiI18QD05TS2V5
+			ZWRBcmNoaXZlctE4OVRkYXRhgAEACAARABoAIwAtADIANwBFAEsA
+			UgBaAGUAbABwAHIAdAB2AHoAfAB+AIAAggCHAIwAkQC6AMEAwgDD
+			AMUAygDVAN4A9AD4AQUBDgETARUBFwEZAR4BKAEqATIBNwFJAU0B
+			VgFbAWoBbgF2AXsBfgGQAZMBmAAAAAAAAAIBAAAAAAAAADoAAAAA
+			AAAAAAAAAAAAAAGa
+			</data>
+			<key>contentSortColIsAsc</key>
+			<true/>
+			<key>contentViewport</key>
+			<string>{{0, 0}, {931, 623}}</string>
+			<key>isToolbarVisible</key>
+			<true/>
+			<key>queries</key>
+			<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 3
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 3
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+			<key>table</key>
+			<string>VENUES</string>
+			<key>view</key>
+			<string>SP_VIEW_CUSTOMQUERY</string>
+			<key>windowVerticalDividerPosition</key>
+			<real>202</real>
+		</dict>
+	</dict>
+	<key>encrypted</key>
+	<false/>
+	<key>format</key>
+	<string>connection</string>
+	<key>queryFavorites</key>
+	<array/>
+	<key>queryHistory</key>
+	<array>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 1
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 1
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY internalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 1
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 15
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY internalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 2
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 2
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY internalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 2
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 2
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 1
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 1
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 5
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 5
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 4
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 4
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 3
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	venue_VenueId = 3
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations,
+-- externalCitations.externalCitations,
+internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations, externalCitations.externalCitations, internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+GROUP BY name) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+GROUP BY name) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations, externalCitations.externalCitations, internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`CitationInformation`	ON `allCitations_identifier` = `identifier`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC
+LIMIT 15</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations, externalCitations.externalCitations, internalCitations.internalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`CitationInformation`	ON `allCitations_identifier` = `identifier`
+-- JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC</string>
+		<string>SELECT externalCitations.name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`CitationInformation`	ON `allCitations_identifier` = `identifier`
+-- JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC</string>
+		<string>SELECT name, externalCitations.externalCitations + internalCitations.internalCitations as totalCitations
+FROM
+(SELECT name, count(*) as externalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`CitationInformation`	ON `allCitations_identifier` = `identifier`
+-- JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as externalCitations
+
+JOIN
+(SELECT name, count(*) as internalCitations
+FROM	`ARTICLES`
+JOIN	`Article_Author` 		ON `ArticleId` = `Article_Author`.`ARTICLES_ArticleID`
+JOIN	`AUTHORS` 				ON `authors_AuthorId` = `AuthorId`
+JOIN	`ALL_CITATIONS`			ON `ArticleId` = `ALL_CITATIONS`.`ARTICLES_ArticleID`
+JOIN	`INTERNAL_CITATIONS`	ON `ArticleId` = `INTERNAL_CITATIONS`.`ARTICLES_ArticleID`
+WHERE	`affiliation_title` != ''
+GROUP BY affiliation_title) as internalCitations
+
+ON `internalCitations`.`name` = `externalCitations`.`name`
+
+ORDER BY totalCitations DESC</string>
+		<string>SELECT internalCitations.name, internalCitations + externalCitations as totalCitations
+FROM
+	(SELECT	name, count(*) as internalCitations FROM ARTICLES
+	 JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+	 JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+	 JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+	 GROUP BY authors_AuthorId) as internalCitations
+	JOIN
+	(SELECT	name, count(*) as externalCitations FROM ARTICLES
+	 JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+	 JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+	 JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+	 GROUP BY authors_AuthorId) as externalCitations
+	ON internalCitations.name = externalCitations.name
+ORDER BY totalCitations DESC</string>
+		<string>SELECT name, internalCitations + externalCitations as totalCitations
+FROM
+	(SELECT	name, count(*) as internalCitations FROM ARTICLES
+	 JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+	 JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+	 JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+	 GROUP BY authors_AuthorId) as internalCitations
+	JOIN
+	(SELECT	name, count(*) as externalCitations FROM ARTICLES
+	 JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+	 JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+	 JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+	 GROUP BY authors_AuthorId) as externalCitations
+	ON internalCitations.name = externalCitations.name
+ORDER BY totalCitations DESC</string>
+		<string>SELECT name, internalCitations + externalCitations as totalCitations
+FROM
+	(SELECT	name, count(*) as internalCitations FROM ARTICLES
+	 JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+	 JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+	 JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+	 GROUP BY authors_AuthorId)
+	JOIN
+	(SELECT	name, count(*) as externalCitations FROM ARTICLES
+	 JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+	 JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+	 JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+	 GROUP BY authors_AuthorId)	
+ORDER BY totalCitations DESC</string>
+		<string>SELECT	name, count(*) as internalCitations FROM ARTICLES
+JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+
+GROUP BY authors_AuthorId
+ORDER BY count(*) DESC</string>
+		<string>SELECT	name, count(*) FROM ARTICLES
+JOIN	Article_Author	ON ArticleId = Article_Author.ARTICLES_ArticleId
+JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+JOIN	INTERNAL_CITATIONS ON ArticleId = INTERNAL_CITATIONS.ARTICLES_ArticleId
+
+GROUP BY authors_AuthorId
+ORDER BY count(*) DESC</string>
+		<string>SELECT	name, count(*) FROM ARTICLES
+JOIN	Article_Author	ON ArticleId = ARTICLES_ArticleId
+JOIN	AUTHORS			ON authors_AuthorId = AuthorId
+JOIN	INTERNAL_CITATIONS ON ArticleId = ARTICLES_ArticleId
+
+GROUP BY authors_AuthorId
+ORDER BY count(*) DESC</string>
+	</array>
+	<key>rdbms_type</key>
+	<string>mysql</string>
+	<key>rdbms_version</key>
+	<string>5.1.54-1ubuntu4</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

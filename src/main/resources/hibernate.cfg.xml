@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://www.jboss.org/dtd/hibernate/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.url">jdbc:mysql://localhost:3306/SEminer</property>
+		<!-- If needed create a tunnel with ssh -N -L localhost:3306:sangiorgiovm:3306 sangiorgio@solawall.dei.polimi.it -->
+		<property name="connection.username">SEminer</property>
+		<property name="connection.password">disseminer</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<!-- thread is the short name for org.hibernate.context.ThreadLocalSessionContext 
+			and let Hibernate bind the session automatically to the thread -->
+		<property name="current_session_context_class">thread</property>
+		<!-- this will show us all sql statements -->
+		<property name="hibernate.show_sql">false</property>
+
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- set create to recreate a new database, update to maintain the existing 
+			data -->
+
+		<mapping class="it.polimi.data.hibernate.entities.Affiliation" />
+		<mapping class="it.polimi.data.hibernate.entities.Article" />
+		<mapping class="it.polimi.data.hibernate.entities.Author" />
+		<mapping class="it.polimi.data.hibernate.entities.FullText" />
+		<mapping class="it.polimi.data.hibernate.entities.Venue" />
+		<mapping class="it.polimi.data.hibernate.entities.CitationInformation" />
+		<mapping class="it.polimi.data.hibernate.entities.TopicProfile" />
+		<mapping class="it.polimi.data.hibernate.entities.VenueTopic" />
+	</session-factory>
+</hibernate-configuration>

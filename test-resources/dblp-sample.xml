@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE dblp SYSTEM "dblp.dtd">
+<dblp>
+	<article key="journals/tse/LiskovZ75" mdate="2003-11-19">
+		<author>Barbara Liskov</author>
+		<author>Stephen N. Zilles</author>
+		<title>Specification Techniques for Data Abstractions.</title>
+		<pages>7-19</pages>
+		<year>1975</year>
+		<volume>1</volume>
+		<journal>IEEE Trans. Software Eng.</journal>
+		<number>1</number>
+		<url>db/journals/tse/tse1.html#LiskovZ75</url>
+	</article>
+	<inproceedings key="conf/icse/DashofyMT99" mdate="2006-03-14">
+		<author>Eric M. Dashofy</author>
+		<author>Nenad Medvidovic</author>
+		<author>Richard N. Taylor</author>
+		<title>
+			Using Off-the-Shelf Middleware to Implement Connectors in
+			Distributed
+			Software Architectures.
+		</title>
+		<pages>3-12</pages>
+		<year>1999</year>
+		<booktitle>ICSE</booktitle>
+		<ee>
+			http://portal.acm.org/citation.cfm?id=302405.302407
+		</ee>
+		<url>db/conf/icse/icse99.html#DashofyMT99</url>
+	</inproceedings>
+	<article mdate="2011-11-07" key="journals/tse/LamSK88">
+		<author>Herman Lam</author>
+		<author>Stanley Y. W. Su</author>
+		<author>Nageshwar R. Koganti</author>
+		<title>A Physical Database Design Evaluation System for CODASYL
+			Databases.</title>
+		<pages>1010-1022</pages>
+		<ee>http://doi.ieeecomputersociety.org/10.1109/32.42741</ee>
+		<year>1988</year>
+		<volume>14</volume>
+		<journal>IEEE Trans. Software Eng.</journal>
+		<number>7</number>
+		<url>db/journals/tse/tse14.html#LamSK88</url>
+	</article>
+	<article mdate="2006-02-09" key="journals/tosem/DashofyHT05">
+		<author>Eric M. Dashofy</author>
+		<author>Andr&eacute; van der Hoek</author>
+		<author>Richard N. Taylor</author>
+		<title>A comprehensive approach for the development of modular software architecture description languages.</title>
+		<pages>199-245</pages>
+		<year>2005</year>
+		<volume>14</volume>
+		<journal>ACM Trans. Softw. Eng. Methodol.</journal>
+		<number>2</number>
+		<ee>http://doi.acm.org/10.1145/1061254.1061258</ee>
+		<url>db/journals/tosem/tosem14.html#DashofyHT05</url>
+	</article>
+</dblp>

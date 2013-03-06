@@ -1,0 +1,1 @@
+SELECT venue, count(*) FROM `SEminer`.`CitationInformation` group by venue order by count(*) desc

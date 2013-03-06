@@ -1,0 +1,1 @@
+SELECT name, count(*),min(year),max(year) FROM `SEminer`.`ARTICLES` JOIN `SEminer`.`VENUES` on venue_venueID = venueId GROUP BY venue_venueId
